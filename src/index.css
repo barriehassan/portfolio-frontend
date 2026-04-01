@@ -1,0 +1,146 @@
+:root {
+  --bg: #0B0B1A;
+  --bg-glass: rgba(11, 11, 26, 0.7);
+  --surface: #12122A;
+  --surface-hover: #1A1A3A;
+  --surface-border: rgba(255, 255, 255, 0.06);
+  --primary: #6D28D9;
+  --secondary: #A78BFA;
+  --accent: #06B6D4;
+  --text: #F5F3FF;
+  --text-muted: #9CA3AF;
+  --font-head: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --gradient: linear-gradient(135deg, var(--primary), var(--accent));
+  --gradient-subtle: linear-gradient(135deg, rgba(109, 40, 217, 0.1), rgba(6, 182, 212, 0.1));
+  --shadow-glow: 0 0 24px rgba(109, 40, 217, 0.35);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-image: 
+      radial-gradient(circle at center, rgba(109, 40, 217, 0.05) 0%, transparent 40%),
+      radial-gradient(var(--surface-border) 1px, transparent 1px);
+  background-size: 100% 100%, 32px 32px;
+  background-attachment: fixed;
+  position: relative;
+}
+
+/* Ambient Glow Layers */
+.ambient-glow {
+  position: fixed;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80vw;
+  height: 60vh;
+  background: radial-gradient(ellipse at top, rgba(109, 40, 217, 0.15) 0%, rgba(6, 182, 212, 0.08) 40%, transparent 70%);
+  filter: blur(100px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-family: var(--font-head);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.text-gradient {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.subtitle {
+  font-family: var(--font-head);
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.subtitle::before {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 2px;
+  background: var(--gradient);
+}
+
+/* Section Global Helpers */
+section {
+  padding: 100px 0;
+}
+
+.section-header {
+  margin-bottom: 80px;
+  max-width: 700px;
+}
+
+.section-header h2 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.section-header p {
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+/* Utility / App Global */
+@keyframes spin-glow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spin-glow-reverse {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.02); }
+}
+
+/* Responsive globals */
+@media (max-width: 768px) {
+  .section-header h2 { font-size: 2.5rem; }
+  section { padding: 80px 0; }
+}
